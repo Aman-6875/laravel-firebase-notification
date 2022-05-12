@@ -16,7 +16,7 @@ class WebNotificationController extends Controller
   
     public function storeToken(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         auth()->user()->update(['device_key'=>$request->token]);
         return response()->json(['Token successfully stored.']);
     }
@@ -31,6 +31,7 @@ class WebNotificationController extends Controller
   
         $data = [
             "registration_ids" => $FcmToken,
+            // "registration_ids" => ["cE57h0_YSKa4gHz04fmr7G:APA91bEWVyQqOykuD8hJfTqRk_ogQyp7sTe3MRlaYGq1KuXTgRNqRR8dTU1K8wXDnUIHxBrt2ipZ24yfmEs5jcSSmzG5-6-y-5-pUKOfAGQ2yb_6eDCB6p4tczEO_AqFv4IrCZ-SZCfg"],
             "notification" => [
                 "title" => $request->title,
                 "body" => $request->body, 
